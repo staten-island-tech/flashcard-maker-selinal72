@@ -14,25 +14,41 @@ for properties in rental_request:
         print(f"Toyota Corolla is unavailable. Suggesting ") """
 
 
+car_rental = {
+    "Toyota Corolla": {"daily_rate": 30, "available": False, "category": "Standard"},
+    "Honda Civic": {"daily_rate": 35, "available": True, "category": "Standard"},
+    "BMW X5": {"daily_rate": 80, "available": True, "category": "Luxury"},
+    "Mercedes C-Class": {"daily_rate": 90, "available": False, "category": "Luxury"},
+    "Ford Focus": {"daily_rate": 28, "available": True, "category": "Standard"}
+}
+rental_request = {
+    "model": "Toyota Corolla",
+    "days": 8}
+
 standard = []
 luxury = []
+for x in car_rental.values():
+    if x['category'] == "Standard" and x['available'] == True:
+        standard.append(x)
+    elif 
+print(standard)
+print(luxury)
+print(standard[0])
+car = car_rental[rental_request['model']]
+rental_cost = car['daily_rate'] * rental_request['days']
 
-for key, value in car_rental.items():
-
-    if value["category"] == "Standard":
-        standard.append(key)
-    elif value["category"] == "Luxury":
-        luxury.append(key)
-
-    for x, y in rental_request.items():
-        if key == y:
-            cost = value["daily_rate"] * y
-            if value["avaliable"] == False:
-                print(f"The {key} is unavailable. Suggesting {standard[0]} instead.")
-
-            elif value["category"] == "Luxury" and y >= 5:
-                luxdisc = cost * 0.9
-                print(f"pre-discount rental cost = {cost}, discounted rental cost = {luxdisc}")
-            elif y > 7:
-                discounted = cost * 0.85
-                print(f"discounted daily rate = {discounted}")
+if car['available'] == True: 
+    if car['category'] == standard:
+        if car['days'] > 7:
+            print("Applying 15% discount for renting for more than 7 days.")
+            print(f"Total rental cost before discounts: ${rental_cost}")
+            discounted = rental_cost * 0.85
+            print(f"Total rental cost after discounts: ${discounted}")
+    else:
+        if car['days'] >= 5:
+            print("Applying 10% discount for renting for more than 5 days.")
+            print(f"Total rental cost before discounts: ${rental_cost}")
+            luxdiscounted = rental_cost * 0.9
+            print(f"Total rental cost after discounts: ${luxdiscounted}")
+else: 
+    print(f"{car} is unavailable. Suggesting {standard[0]} instead.")
