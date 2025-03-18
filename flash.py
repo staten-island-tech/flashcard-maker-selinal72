@@ -30,11 +30,12 @@ luxury = []
 for x in car_rental.values():
     if x['category'] == "Standard" and x['available'] == True:
         standard.append(x)
-    elif 
+    elif x['category'] == "Luxury" and x['available'] == True:
+        luxury.append(x)
 print(standard)
 print(luxury)
-print(standard[0])
 car = car_rental[rental_request['model']]
+car_name = rental_request['model']
 rental_cost = car['daily_rate'] * rental_request['days']
 
 if car['available'] == True: 
@@ -51,4 +52,4 @@ if car['available'] == True:
             luxdiscounted = rental_cost * 0.9
             print(f"Total rental cost after discounts: ${luxdiscounted}")
 else: 
-    print(f"{car} is unavailable. Suggesting {standard[0]} instead.")
+    print(f"{car_name} is unavailable. Suggesting {standard[0]} instead.")
