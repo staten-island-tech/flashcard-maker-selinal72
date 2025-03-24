@@ -22,7 +22,12 @@ while ask == "Y":
     print(cards_data)
     ask = input("Create flashcard? Y/N ")
 
+class student:
+    def __init__(self, name, score):
+        self.name = name
+        self.score = score
+    def
 switch = input("Switch to Student Mode? Y/N ")
 while switch == "Y":
-    for phrase in cards_data:
-        print(cards_data['phrase'])
+    for x,y in cards_data.items():
+        print
