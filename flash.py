@@ -11,8 +11,6 @@ class flashcards:
         card.answer = answer
     def display(card):
         print(card.phrase, card.answer)
-    def dict(card):
-        card.dict
 
 ask = input("Create flashcard? Y/N ")
 while ask == "Y":
@@ -20,5 +18,11 @@ while ask == "Y":
     input2 = input("Enter Definition/Answer: ")
     mansa_musa = flashcards(input1, input2)
     mansa_musa.display()
-    cards_data.append(mansa_musa.dict())
+    cards_data.append(mansa_musa.__dict__)
+    print(cards_data)
+    ask = input("Create flashcard? Y/N ")
 
+switch = input("Switch to Student Mode? Y/N ")
+while switch == "Y":
+    for phrase in cards_data:
+        print(cards_data['phrase'])
