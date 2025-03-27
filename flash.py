@@ -3,7 +3,7 @@ try:
     with open("cards.json", "r") as file:
         cards_data = json.load(file)
 except FileNotFoundError:
-    cards_data = []
+    cards_data = {}
 
 class flashcards:
     def __init__(card, phrase, answer):
@@ -19,37 +19,40 @@ ask = input("Create flashcard? Y/N ")
 while ask == "Y":
     input1 = input("Enter Word/Phrase: ")
     input2 = input("Enter Definition/Answer: ")
-    mansa_musa = flashcards(input1, input2)
+    cards_data[input1] = input2
+
+    """ mansa_musa = flashcards(input1, input2)
     print(mansa_musa.create_dict())
-    cards_data.append(mansa_musa.__dict__)
+    cards_data.append(mansa_musa.__dict__) """
+
     print(cards_data)
     ask = input("Create flashcard? Y/N ")
-    print(cards_data)
 
 class student:
     def __init__(self, name, score, streak):
         self.name = name
         self.score = score
         self.streak = streak
-    def show_score(self):
-        print(self.score)
     def points(self):
-        self.score =+ 1
+        self.score = self.score + 1
+        return self.score
     def streaks(self):
-        self.streak =+1
-    def reset_score(self):
+        self.streak = self.streak + 1
+        return self.streak
+    def reset_streak(self):
         self.streak = 0
+    def show_score(self):
+        return self.score
 
 selina = student("selina", 0, 0)
 switch = input("Switch to Student Mode? Y/N ")
 while switch == "Y":
-    for x in cards_data:
-        phrases = x['phrase']
-        print(phrases)
+    for key, value in cards_data.items():
+        print(key)
         attempt = input("Enter Answer: ")
-        if attempt == phrases['answer']:
-            print(f"Correct! Good job! Current Score: {print(selina.points())}. Current Streak: {print(selina.streaks())}")
+        if attempt == value:
+            print(f"Correct! Good job! Current Score: {selina.points()}. Current Streak: {selina.streaks()}")
         else:
-            selina.reset_score()
-            print(f"Incorrect. Streak broken. Current Score: {print(selina.show_score())}")
-    again = input("Attempt another round? Y/N ")
+            selina.reset_streak()
+            print(f"Incorrect. Streak broken. Current Score: {selina.show_score()}")
+    switch = input("Attempt another round? Y/N ")
