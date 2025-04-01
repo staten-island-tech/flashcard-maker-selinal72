@@ -1,9 +1,9 @@
 import json
 try:
-    with open("cards.json", "r") as file:
-        cards_data = json.load(file)
+    with open("flashcards.json", "r") as file:
+        flashcards_data = json.load(file)
 except FileNotFoundError:
-    cards_data = {}
+    flashcards_data = {}
 
 class flashcards:
     def __init__(card, phrase, answer):
@@ -19,13 +19,13 @@ ask = input("Create flashcard? Y/N ")
 while ask == "Y":
     input1 = input("Enter Word/Phrase: ")
     input2 = input("Enter Definition/Answer: ")
-    cards_data[input1] = input2
+    flashcards_data[input1] = input2
 
     """ mansa_musa = flashcards(input1, input2)
     print(mansa_musa.create_dict())
     cards_data.append(mansa_musa.__dict__) """
 
-    print(cards_data)
+    print(flashcards_data)
     ask = input("Create flashcard? Y/N ")
 
 class student:
@@ -47,7 +47,7 @@ class student:
 selina = student("selina", 0, 0)
 switch = input("Switch to Student Mode? Y/N ")
 while switch == "Y":
-    for key, value in cards_data.items():
+    for key, value in flashcards_data.items():
         print(key)
         attempt = input("Enter Answer: ")
         if attempt == value:
