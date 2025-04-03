@@ -3,7 +3,9 @@ try:
     with open("flashcards.json", "r") as file:
         flashcards_data = json.load(file)
 except FileNotFoundError:
-    flashcards_data = {}
+    flashcards_data = []
+except json.JSONDecodeError:
+    flashcards_data = []
 
 class flashcards:
     def __init__(card, phrase, answer):
@@ -19,14 +21,19 @@ ask = input("Create flashcard? Y/N ")
 while ask == "Y":
     input1 = input("Enter Word/Phrase: ")
     input2 = input("Enter Definition/Answer: ")
-    flashcards_data[input1] = input2
 
-    """ mansa_musa = flashcards(input1, input2)
+    """ new_flashcard = {"phrase": input1, "answer": input2}
+    flashcards_data.append(new_flashcard) """
+
+    mansa_musa = flashcards(input1, input2)
     print(mansa_musa.create_dict())
-    cards_data.append(mansa_musa.__dict__) """
+    flashcards_data.append(mansa_musa.__dict__)
 
     print(flashcards_data)
     ask = input("Create flashcard? Y/N ")
+else:
+    with open("flashcards_data.json", "w") as file:
+        json.dump(flashcards, file)
 
 class student:
     def __init__(self, name, score, streak):
@@ -47,10 +54,10 @@ class student:
 selina = student("selina", 0, 0)
 switch = input("Switch to Student Mode? Y/N ")
 while switch == "Y":
-    for key, value in flashcards_data.items():
-        print(key)
+    for flashcard in flashcards_data:
+        print(flashcard["phrase"])
         attempt = input("Enter Answer: ")
-        if attempt == value:
+        if attempt == flashcard["answer"]:
             print(f"Correct! Good job! Current Score: {selina.points()}. Current Streak: {selina.streaks()}")
         else:
             selina.reset_streak()
