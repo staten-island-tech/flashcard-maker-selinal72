@@ -6,7 +6,7 @@ except FileNotFoundError:
     flashcards_data = []
 except json.JSONDecodeError:
     flashcards_data = []
-print(flashcards_data)
+
 class flashcards:
     def __init__(card, phrase, answer):
         card.phrase = phrase
