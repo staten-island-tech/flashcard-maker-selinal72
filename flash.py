@@ -1,12 +1,12 @@
 import json
 try:
-    with open("flashcards.json", "r") as file:
+    with open("flashcards_data.json", "r") as file:
         flashcards_data = json.load(file)
 except FileNotFoundError:
     flashcards_data = []
 except json.JSONDecodeError:
     flashcards_data = []
-
+print(flashcards_data)
 class flashcards:
     def __init__(card, phrase, answer):
         card.phrase = phrase
@@ -33,7 +33,7 @@ while ask == "Y":
     ask = input("Create flashcard? Y/N ")
 else:
     with open("flashcards_data.json", "w") as file:
-        json.dump(flashcards, file)
+        json.dump(flashcards_data, file)
 
 class student:
     def __init__(self, name, score, streak):
