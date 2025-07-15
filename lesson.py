@@ -6,6 +6,6 @@ class Merchant:
         self.products.remove(item)
         print(self.products)
 Joanna = Merchant("Joanna", ['Chicken', 'john pork','beef'])
-Joanna.sell('pork')
+Joanna.sell('john pork')
 Alvin = Merchant("Alvin", ["Human", "Alvin's Servitude", "Breaks", "Organs"])
 Alvin.sell("Human")
